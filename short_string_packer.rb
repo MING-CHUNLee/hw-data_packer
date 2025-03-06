@@ -8,8 +8,14 @@ module ShortStringPacker
   # Returns: a Integer object
   def self.pack(str)
     # IMPLEMENT THIS METHOD
-    # Convert string to bytes and reduce to a single integer
-    str.bytes.reduce(0) { |acc, byte| (acc << 8) + byte }
+    # Convert string to bytes and join to form an integer
+    result = 0
+    # Loop through each byte in string and convert to integer
+    str.bytes.each do |byte|
+      # Shift result to the left by 8 bits and add byte
+      result = (result << 8) + byte
+    end
+    result
   end
 
   ## Unpacks a Integer from pack() method into a short string
